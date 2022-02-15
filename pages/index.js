@@ -14,18 +14,24 @@ const App = ({ props }) => {
 
   const generatePoem = async () => {
     setLoading(true);
-    const response = await openai.createCompletion("text-davinci-001", {
-      prompt: `The user provided this code, please make a poem from it:\n###\n${code}\n###\n`,
-      temperature: 0.63,
-      max_tokens: 672,
-      top_p: 0.49,
-      frequency_penalty: 1.55,
-      presence_penalty: 2,
-      n: 1,
-      stream: false
-    });
-    setOutput(response.data.choices[0].text);
-    setLoading(false);
+
+    // Make a request to 'hello' endpoint
+    fetch("/api/hello", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: code,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setOutput(data.output);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   };
 
   return (
@@ -35,12 +41,16 @@ const App = ({ props }) => {
       <textarea
         value={code}
         onChange={e => setCode(e.target.value)}
-        maxLength="100"
       />
       <button className="gradient__button" onClick={generatePoem}>Generate Poem</button>
       <p>{loading ? "Loading..." : output}</p>
     </div>
   );
+};
+
+// Server side request when the form is submitted
+export const getServerSideProps = async () => {
+  return { props: {} };
 };
 
 export default App;
