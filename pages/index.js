@@ -35,6 +35,7 @@ const App = ({ props }) => {
       <textarea
         value={code}
         onChange={e => setCode(e.target.value)}
+        maxLength="100"
       />
       <button className="gradient__button" onClick={generatePoem}>Generate Poem</button>
       <p>{loading ? "Loading..." : output}</p>
