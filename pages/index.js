@@ -1,18 +1,16 @@
 
 import { useState } from "react";
-const { Configuration, OpenAIApi } = require("openai");
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
-
-const App = ({ props }) => {
+const App = () => {
   const [code, setCode] = useState("");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const generatePoem = async () => {
+  const generatePoem = () => {
+    /*
+    * Generates a poem using the api route 'api/hello' to ensure 
+    * that the Bearer token is not communicated to the frontend.
+    */
     setLoading(true);
     fetch("/api/hello", {
       method: "POST",
@@ -25,6 +23,8 @@ const App = ({ props }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        // This will set the loading text to the output which 
+        // will contain the poem
         setOutput(data.output);
         setLoading(false);
       })
@@ -43,7 +43,13 @@ const App = ({ props }) => {
         onChange={e => setCode(e.target.value)}
       />
       <button className="gradient__button" onClick={generatePoem}>Generate Poem</button>
-      <p>{loading ? "Loading..." : output.replace(new RegExp('\r?\n','g'), ' ')}</p>
+      {/* If loading is true, display the loading text. Else display the poem
+        however, replace the new line characters with <br/> tags */}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <p dangerouslySetInnerHTML={{ __html: output.replace(/\n/g, "<br/>") }}></p>
+      )}
     </div>
   );
 };

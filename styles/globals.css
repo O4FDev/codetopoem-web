@@ -28,6 +28,8 @@ textarea {
   margin-bottom: 1rem;
 }
 
+/* The background of the button is a linear gradient, that starts at the left side 
+of the button and ends at the right side of the button from #f093fb to #f5576c. */
 .gradient__button {
   background: linear-gradient(to right, #f093fb 0%, #f5576c 100%);
   border: none;
