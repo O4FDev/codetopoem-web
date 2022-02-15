@@ -8,7 +8,7 @@ const openai = new OpenAIApi(configuration);
 
 export default async function handler(req, res) {
   const response = await openai.createCompletion("text-davinci-001", {
-    prompt: `The user provided this code, please make a poem from it:\n###\n${req.body}\n###\n`,
+    prompt: `The user provided this code, please make a poem from it:\n###\n${req.body.code}\n###\n`,
     temperature: 0.63,
     max_tokens: 100,
     top_p: 0.49,

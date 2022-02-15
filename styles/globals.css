@@ -40,8 +40,6 @@ textarea {
   margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
-  p {
-    padding: 3em
-  }
+p {
+  padding: 3em
 }

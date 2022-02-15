@@ -19,7 +19,9 @@ const App = ({ props }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: code,
+      body: JSON.stringify({
+        code: code,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -41,14 +43,9 @@ const App = ({ props }) => {
         onChange={e => setCode(e.target.value)}
       />
       <button className="gradient__button" onClick={generatePoem}>Generate Poem</button>
-      <p>{loading ? "Loading..." : output}</p>
+      <p>{loading ? "Loading..." : output.replace(new RegExp('\r?\n','g'), ' ')}</p>
     </div>
   );
-};
-
-// Server side request when the form is submitted
-export const getServerSideProps = async () => {
-  return { props: {} };
 };
 
 export default App;
