@@ -1,4 +1,5 @@
 
+import Head from "next/head";
 import { useState } from "react";
 
 const App = () => {
@@ -35,21 +36,26 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Poem Generator</h1>
-      <h2>Input code</h2>
-      <textarea
-        value={code}
-        onChange={e => setCode(e.target.value)}
-      />
-      <button className="gradient__button" onClick={generatePoem}>Generate Poem</button>
-      {/* If loading is true, display the loading text. Else display the poem
-        however, replace the new line characters with <br/> tags */}
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <p dangerouslySetInnerHTML={{ __html: output.replace(/\n/g, "<br/>") }}></p>
-      )}
+    <div>
+      <Head>
+        <title>CodeToPoem</title>
+      </Head>
+      <div className="container">
+        <h1>Poem Generator</h1>
+        <h2>Input code</h2>
+        <textarea
+          value={code}
+          onChange={e => setCode(e.target.value)}
+        />
+        <button className="gradient__button" onClick={generatePoem}>Generate Poem</button>
+        {/* If loading is true, display the loading text. Else display the poem
+          however, replace the new line characters with <br/> tags */}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <p dangerouslySetInnerHTML={{ __html: output.replace(/\n/g, "<br/>") }}></p>
+        )}
+      </div>
     </div>
   );
 };
