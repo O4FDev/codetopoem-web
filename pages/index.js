@@ -14,8 +14,6 @@ const App = ({ props }) => {
 
   const generatePoem = async () => {
     setLoading(true);
-
-    // Make a request to 'hello' endpoint
     fetch("/api/hello", {
       method: "POST",
       headers: {
