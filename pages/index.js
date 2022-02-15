@@ -31,15 +31,14 @@ const App = ({ props }) => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Poem Generator</h1>
       <h2>Input code</h2>
-      <input
-        type="text"
+      <textarea
         value={code}
         onChange={e => setCode(e.target.value)}
       />
-      <button onClick={generatePoem}>Generate Poem</button>
+      <button className="gradient__button" onClick={generatePoem}>Generate Poem</button>
       <p>{loading ? "Loading..." : output}</p>
     </div>
   );
