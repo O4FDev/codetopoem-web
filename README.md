@@ -21,4 +21,4 @@ Using `npm run dev` will allow you to view the page on your localhost enviornmen
 
 ## What I have learnt
 
-This project 
+This project is built upon GPT-3 so through messing around with variations in settings I've been able to develop a deeper understanding of how to use prompts and settings in GPT-3 to generate a solution. 
