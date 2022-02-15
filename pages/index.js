@@ -46,6 +46,7 @@ const App = () => {
         <textarea
           value={code}
           onChange={e => setCode(e.target.value)}
+          maxLength="400"
         />
         <button className="gradient__button" onClick={generatePoem}>Generate Poem</button>
         {/* If loading is true, display the loading text. Else display the poem
