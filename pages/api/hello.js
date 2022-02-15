@@ -6,7 +6,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const response = await openai.createCompletion("text-davinci-001", {
     prompt: `The user provided this code, please make a poem from it:\n###\n${req.body}\n###\n`,
     temperature: 0.63,
