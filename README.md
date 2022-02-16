@@ -1,6 +1,6 @@
 # [Code to Poem](https://codetopoem.com/)
 
-Code to Poem is a simple AI-based app for developers to take code and explain it in a poem.
+Code to Poem is a simple AI-based app for developers to take code and transform it into a magical poem.
 
 ## Apendix
 - [Code to Poem](#code-to-poem)
